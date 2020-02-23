@@ -1,0 +1,40 @@
+<ion-app>
+  <ion-menu side="start">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>AR Builder</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+      <ion-list>
+        <ion-menu-toggle auto-hide="false">
+          <ion-item  routerLink="/dashboard">
+            Dashboard
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle auto-hide="false">
+          <ion-item  routerLink="/plan">
+            Upgrade/ TopUp Plan
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle auto-hide="false">
+          <ion-item class="item" routerLink="/upload">
+            Upload Image
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle auto-hide="false">
+          <ion-item class="item" routerLink="/model">
+            3D Models
+          </ion-item>
+        </ion-menu-toggle>        
+        <ion-menu-toggle auto-hide="false">
+          <ion-item class="item" (click)="logOut()" button>
+            Logout
+          </ion-item>
+        </ion-menu-toggle>  
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet main></ion-router-outlet>
+</ion-app>
