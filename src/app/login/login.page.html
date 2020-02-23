@@ -13,18 +13,20 @@
         <ion-card-title>AR Builder</ion-card-title>
       </ion-card-header>
     </ion-item-divider>
-    <ion-card-content>
-        <ion-input type="text" class="input" name="username" placeholder="Username"></ion-input>
-        <br>
-        <ion-input type="text" class="input" name="pwd" placeholder="Password"></ion-input>
-        <br>
-        <ion-row>
-          <ion-col text-right>
-            <ion-button color="primary" type="submit">Login</ion-button>
-          </ion-col>
-        </ion-row>
-        <br>
-        <ion-label>Don't Have Account? Sign Up here</ion-label>
+    <ion-card-content [formGroup]="loginForm">
+      <ion-input [(ngModel)]="data.userName" formControlName="username" type="text" class="input" name="username"
+        placeholder="Username"></ion-input>
+      <br>
+      <ion-input [(ngModel)]="data.password" formControlName="password" type="password" class="input" name="password"
+        placeholder="Password"></ion-input>
+      <br>
+      <ion-row>
+        <ion-col text-right>
+          <ion-button class="login-button" [disabled]="!loginForm.valid" (click)="login()" color="primary" type="submit">Login</ion-button>
+        </ion-col>
+      </ion-row>
+      <br>
+      <ion-label>Don't Have Account? Sign Up here</ion-label>
     </ion-card-content>
   </ion-card>
 </ion-content>

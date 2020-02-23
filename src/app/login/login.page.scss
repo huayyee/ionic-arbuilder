@@ -1,17 +1,21 @@
-ion-item-divider, ion-card-header{
+ion-item-divider,
+ion-card-header {
     background: #EBF5F3
 }
 
-ion-card{
-    width:30%;
+ion-card {
+    // width:30%;
     background: #EBF5F3;
-    margin-top: 2% ;
-    margin-right:2%;
-    float: right;
-    
+    margin-top: 2%;
+    margin-right: 2%;
+    // float: right;
 }
 
-.input{
+.input {
     background: #ffffff;
 }
 
+.login-button {
+    display: flex;
+    margin: 2em;
+}
