@@ -8,5 +8,36 @@
 </ion-header>
 
 <ion-content>
-  <ion-button color="primary" padding>Upload Image</ion-button>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button color="primary" (click)="getPicture(1)" padding>Camera</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="primary" (click)="getPicture(0)" padding>Gallery</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-card *ngIf="imageData">
+      <ion-card-content>
+        <img [src]="imageData"/>
+      </ion-card-content>
+      <!-- <ion-card-header>
+        <ion-card-title>
+          <div *ngIf="useURI">
+            Using URI
+          </div>
+          <div *ngIf="!useURI">
+            Using Base64
+          </div>
+          <p *ngIf="useURI">
+            Your URI is {{ imageData }}
+          </p>
+          <p *ngIf="!useURI">
+            Your Base64 image has {{ (imageData + '').length }} bytes
+          </p>
+        </ion-card-title>
+      </ion-card-header> -->
+      <button ion-button slot="end" color="primary" (click)="upload()">Upload</button>
+    </ion-card>
+  </ion-grid>
 </ion-content>

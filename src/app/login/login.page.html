@@ -21,12 +21,14 @@
         placeholder="Password"></ion-input>
       <br>
       <ion-row>
-        <ion-col text-right>
-          <ion-button class="login-button" [disabled]="!loginForm.valid" (click)="login()" color="primary" type="submit">Login</ion-button>
+        <ion-col>
+          <ion-button class="login-button" [disabled]="!loginForm.valid" (click)="login()" color="primary" type="submit" expand="block">Login</ion-button>
         </ion-col>
       </ion-row>
-      <br>
-      <ion-label>Don't Have Account? Sign Up here</ion-label>
+      <ion-row>
+        <ion-label class="ion-text-center">Don't Have Account?</ion-label>
+      </ion-row>
+      <ion-button fill="clear" routerLink="/register" expand="block">Sign Up</ion-button>
     </ion-card-content>
   </ion-card>
 </ion-content>

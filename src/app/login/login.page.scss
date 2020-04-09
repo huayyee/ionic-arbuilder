@@ -4,18 +4,16 @@ ion-card-header {
 }
 
 ion-card {
-    // width:30%;
     background: #EBF5F3;
     margin-top: 2%;
     margin-right: 2%;
-    // float: right;
 }
 
 .input {
     background: #ffffff;
 }
 
-.login-button {
-    display: flex;
-    margin: 2em;
+.ion-text-center{
+    text-align: center;
+    margin: 0 auto;
 }

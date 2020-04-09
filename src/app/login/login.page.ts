@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api/api.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { NavController } from '@ionic/angular';
+import { DashboardPage } from '../dashboard/dashboard.page';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +11,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  // ini data sama macam swagger
+  //refer swagger
   data = {
     userName: '',
     password: ''
@@ -28,6 +31,7 @@ export class LoginPage implements OnInit {
   };
 
   constructor(
+    public router: Router,
     public apiService: ApiService
   ) {
     this.loginForm = new FormGroup({
@@ -51,6 +55,7 @@ export class LoginPage implements OnInit {
     // then this.data tu send dalam ni
     this.apiService.login(this.data).then(response => {
       console.log('if http status 2xx come here', response);
+      this.router.navigateByUrl('/dashboard');
 
     }).catch(error => {
       console.log('if http status 4xx/5xx come here', error);

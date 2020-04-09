@@ -1,5 +1,7 @@
 {
   "name": "arBuilder_web",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
