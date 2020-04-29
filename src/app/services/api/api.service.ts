@@ -13,15 +13,19 @@ export class ApiService {
   }
 
   login(data) {
-    return this.httpClient.post(`http://192.168.0.158:80/api/users/login`, data).toPromise();
+    return this.httpClient.post(`http://192.168.0.158:8080/api/login`, data).toPromise();
   }
 
   register(data) {
-    return this.httpClient.post(`http://192.168.0.158:80/api/users/createUser`, data).toPromise();
+    return this.httpClient.post(`http://localhost:8080/api/register`, data).toPromise();
   }
 
   upload(data) {
-    return this.httpClient.post(`http://192.168.0.158:80/api/tdmodels/uploadTDModel`, data).toPromise();
+    return this.httpClient.post(`http://localhost:8080/api/files/upload`, data).toPromise();
   } 
+
+  logout(){
+    return this.httpClient.get(`http://localhost:8080/api/logout`);
+  }
 }
 //192.168.0.158

@@ -4,6 +4,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { NavController } from '@ionic/angular';
 import { DashboardPage } from '../dashboard/dashboard.page';
 import { Router } from '@angular/router';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ import { Router } from '@angular/router';
 export class LoginPage implements OnInit {
   //refer swagger
   data = {
-    userName: '',
+    username: '',
     password: ''
   }
 
@@ -51,15 +52,16 @@ export class LoginPage implements OnInit {
 
   login() {
     console.log('login');
-
-    // then this.data tu send dalam ni
+    // this.data tu send dalam ni
     this.apiService.login(this.data).then(response => {
       console.log('if http status 2xx come here', response);
-      this.router.navigateByUrl('/dashboard');
-
+      // this.router.navigateByUrl('/dashboard');
+      // console.log('login');
+      if(response.isPrototypeOf.length == 1){
+        this.router.navigateByUrl('/dashboard'); 
+      }
     }).catch(error => {
       console.log('if http status 4xx/5xx come here', error);
-
     })
   }
 

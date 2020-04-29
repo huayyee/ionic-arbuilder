@@ -10,8 +10,8 @@ import { ApiService } from '../services/api/api.service';
 })
 export class RegisterPage implements OnInit {
   data = {
-    userName: '',
     fullname: '',
+    username: '',
     password: '',
     email: '',
     contact_number: ''
@@ -111,8 +111,8 @@ export class RegisterPage implements OnInit {
 
   reset() {
     this.data = {
-      userName: '',
       fullname: '',
+      username: '',
       password: '',
       email: '',
       contact_number: ''
