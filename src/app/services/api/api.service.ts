@@ -21,11 +21,11 @@ export class ApiService {
   }
 
   upload(data) {
-    return this.httpClient.post(`http://localhost:8080/api/files/upload`, data).toPromise();
+    return this.httpClient.post('http://localhost:8080/api/files/upload', data).toPromise();
   } 
 
   logout(){
-    return this.httpClient.get(`http://localhost:8080/api/logout`);
+    return this.httpClient.get('http://localhost:8080/api/logout');
   }
 }
 //192.168.0.158

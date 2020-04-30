@@ -30,8 +30,15 @@ export class AppComponent {
   }
 
   logOut(){
-    console.log("Log Out");
-    this.apiService.logout();
-    this.router.navigateByUrl("/login");
+    this.apiService.logout().subscribe(data => {
+      console.log(data);        
+    },
+    error => {
+      console.log(error);
+    },
+    () => {
+      console.log("logout");
+      this.router.navigateByUrl('/login');
+    });
   }
 }

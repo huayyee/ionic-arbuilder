@@ -1,19 +1,53 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar color="primary">
     <ion-title>
       AR Builder
     </ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
-<ion-content>
-  <ion-card>
+<ion-content class="signin">
+  <form [formGroup]="loginForm">
+    <ion-grid >
+      <ion-row color="primary" justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <div text-center margin>
+            <img src="assets/icon/arbuilder.png" class="smallLogo"/>
+            <h4>Sign In</h4>
+          </div>
+
+          <div padding>
+            <ion-item>
+              <ion-label position="floating" class="whiteText">Username</ion-label>
+              <ion-input [(ngModel)]="data.username" formControlName="username" type="text" class="whiteText" name="username"
+            ></ion-input>
+            </ion-item>
+            
+            <ion-item>
+              <ion-label position="floating" class="whiteText">Password</ion-label>
+              <ion-input [(ngModel)]="data.password" formControlName="password" type="password" class="whiteText" name="password"
+                ></ion-input>
+              </ion-item>
+          </div>
+
+          <div padding>
+            <ion-button [disabled]="!loginForm.valid" (click)="login()" color="primary" type="submit" expand="block">Login</ion-button>
+            <br>
+            <ion-button fill="clear" routerLink="/register" expand="block" class="whiteText">Sign Up</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
+
+<!-- <ion-card>
     <ion-item-divider>
       <ion-card-header>
         <ion-card-title>AR Builder</ion-card-title>
       </ion-card-header>
-    </ion-item-divider>
-    <ion-card-content [formGroup]="loginForm">
+    </ion-item-divider> -->
+    <!-- <ion-card-content [formGroup]="loginForm">
       <ion-input [(ngModel)]="data.username" formControlName="username" type="text" class="input" name="username"
         placeholder="Username"></ion-input>
       <br>
@@ -28,7 +62,6 @@
       <ion-row>
         <ion-label class="ion-text-center">Don't Have Account?</ion-label>
       </ion-row>
-      <ion-button fill="clear" routerLink="/register" expand="block">Sign Up</ion-button>
-    </ion-card-content>
-  </ion-card>
-</ion-content>
+      <ion-button fill="clear" routerLink="/register" expand="block">Sign Up</ion-button> -->
+    <!-- </ion-card-content>
+  </ion-card> class="login-button" -->

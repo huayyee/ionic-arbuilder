@@ -1,19 +1,22 @@
-ion-item-divider,
-ion-card-header {
-    background: #EBF5F3
+// ion-item-divider,
+// ion-card-header {
+//     background: #EBF5F3
+// }
+
+// ion-card {
+//     background: #EBF5F3;
+//     margin-top: 2%;
+//     margin-right: 2%;
+// }
+
+ion-content{
+    --ion-background-color:rgb(233, 236, 240);
 }
 
-ion-card {
-    background: #EBF5F3;
-    margin-top: 2%;
-    margin-right: 2%;
+.smallLogo{
+    width: 45%;
 }
 
-.input {
-    background: #ffffff;
-}
-
-.ion-text-center{
-    text-align: center;
-    margin: 0 auto;
+.whiteText{
+    color:rgb(112, 110, 110);
 }
