@@ -27,5 +27,9 @@ export class ApiService {
   logout(){
     return this.httpClient.get('http://localhost:8080/api/logout');
   }
+
+  getUser(){
+    return this.httpClient.get('http://localhost:8080/api/users');
+  }
 }
 //192.168.0.158

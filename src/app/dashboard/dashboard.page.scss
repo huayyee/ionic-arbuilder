@@ -1,4 +1,45 @@
-ion-card{
-    background: rgb(240, 239, 239);  
-    color: black;
+.gridView{
+    background-color: rgb(245, 245, 240);;
+    border-radius: 5px;
+    padding: 3em;
+    margin-left: 5px;
+    margin-right: 5px;
+    // Add a flex rule for browsers not supporting the
+    // CSS Grid Layout spec
+    //flex: 1 1 300px;
+     
+    h4 {
+        font-weight: bold;
+    }
 }
+
+// .wrapper {
+//     display: flex;
+//     flex-wrap: wrap;
+//  }
+
+//  //grid gap
+//  .wrapper > * {
+//     margin-bottom: 10px;
+//   }
+
+  .wrapper {
+    display: grid;
+ 
+    // Define a 10 pixel gap between each grid track
+    grid-gap: 10px;
+  
+    // Define a rule, that will be repeated for each grid column, where
+    // the grid track is set to a minimum width of 300 pixels and a maximum 
+    // width of the available space within the grid container (via the fr or 
+    // fraction unit)
+ 
+    // The auto-fill value allows as many grid tracks to be fitted into the
+    // width of the grid container as possible
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+ 
+    // Specify the height of the row - minimum value of 50 pixels and a maximum
+    // value set to auto
+    grid-auto-rows: minmax(150px, auto);
+ 
+ }

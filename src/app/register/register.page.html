@@ -6,8 +6,68 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-card>
+<ion-content overflow-scroll="true">
+  <form [formGroup]="registerForm">
+    <ion-grid >
+      <ion-row color="primary" justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <div text-center margin>
+            <img src="assets/icon/arbuilder.png" class="smallLogo"/>
+          </div>
+
+          <div padding>
+            <ion-item>
+              <ion-label position="floating">Username</ion-label>
+              <ion-input [(ngModel)]="data.username" formControlName="username" type="text" class="input" name="username"
+                ></ion-input>
+            </ion-item>
+      
+            <ion-item>
+              <ion-label position="floating">Fullname</ion-label>
+              <ion-input [(ngModel)]="data.fullname" formControlName="fullname" type="text" class="input" name="fullname"
+               ></ion-input>
+            </ion-item>
+      
+            <div [formGroup]="matching_passwords">
+              <ion-item>
+                <ion-label position="floating">Password</ion-label>
+                <ion-input [(ngModel)]="data.password" formControlName="password" type="password" class="input"
+                  name="password" ></ion-input>
+              </ion-item>
+      
+              <ion-item>
+                <ion-label position="floating">Confirm Password</ion-label>
+                <ion-input formControlName="confirm_password" type="password" value="" class="input" name="confirm_password"
+                  >
+                </ion-input>
+              </ion-item>
+            </div>
+      
+            <ion-item>
+              <ion-label position="floating">Email</ion-label>
+              <ion-input [(ngModel)]="data.email" formControlName="email" type="email" class="input" name="email"
+                ></ion-input>
+            </ion-item>
+      
+            <ion-item>
+              <ion-label position="floating">Contact Number</ion-label>
+              <ion-input [(ngModel)]="data.contact_number" formControlName="contact_number" type="number" class="input"
+                name="contact_number" ></ion-input>
+            </ion-item>
+
+            <div text-center padding>
+              <ion-button [disabled]="!registerForm.valid" (click)="register()" class="button" color="primary"
+              type="submit">Submit</ion-button>
+              <ion-button (click)="reset()" class="button" color="danger" type="reset">Reset</ion-button>
+            </div>
+
+        </div>
+          <ion-button fill="clear" routerLink="/login" expand="block">Back to Login</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+  <!-- <ion-card>
     <ion-item-divider>
       <ion-card-header>
         <ion-card-title>Registration Form</ion-card-title>
@@ -67,5 +127,5 @@
       </ion-row>
       <ion-button fill="clear" routerLink="/login" expand="block">Login</ion-button>
     </ion-card-content>
-  </ion-card>
+  </ion-card> -->
 </ion-content>

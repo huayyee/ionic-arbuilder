@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api/api.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { NavController } from '@ionic/angular';
-import { DashboardPage } from '../dashboard/dashboard.page';
 import { Router } from '@angular/router';
-import { HttpHeaders } from '@angular/common/http';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -33,7 +31,8 @@ export class LoginPage implements OnInit {
 
   constructor(
     public router: Router,
-    public apiService: ApiService
+    public apiService: ApiService,
+    public alertCtrl: AlertController
   ) {
     this.loginForm = new FormGroup({
       'username': new FormControl('', Validators.compose([
@@ -62,7 +61,16 @@ export class LoginPage implements OnInit {
       }
     }).catch(error => {
       console.log('if http status 4xx/5xx come here', error);
+      this.presentFailAlert();
     })
   }
 
+  async presentFailAlert(){
+    const alert = await this.alertCtrl.create({
+      subHeader:"Login Failed",
+      message:"Sorry, please try again.",
+      buttons:['OK']
+    });
+    await alert.present();
+  }
 }
