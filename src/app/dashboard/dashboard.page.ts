@@ -8,7 +8,7 @@ import { ApiService } from '../services/api/api.service';
 })
 export class DashboardPage implements OnInit {
 
-  userData : any;
+  image: any;
 
   constructor(
     public apiService : ApiService
@@ -19,10 +19,10 @@ export class DashboardPage implements OnInit {
   }
 
   retrieveImage(){
-    this.apiService.getUser().subscribe(response => {
-      console.log(JSON.stringify(response));
-      //this.userData = "" + JSON.stringify(response);
-      this.userData = response;
+    this.apiService.getTdModel().subscribe(data => {
+      this.image = data;
+      console.log(JSON.stringify(data));
+      console.log(data);
     })
   }
 }

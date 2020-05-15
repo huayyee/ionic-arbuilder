@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ApiService } from '../services/api/api.service';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { AlertController } from '@ionic/angular';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-upload',
@@ -12,27 +13,33 @@ export class UploadPage implements OnInit {
 
   imageData: string;
   @Input() useURI = true;
+  fileData: File = null;
 
-  constructor(private camera:Camera , public apiService: ApiService, public alertControl: AlertController) { }
+  constructor(
+    private camera:Camera , 
+    public apiService: ApiService, 
+    public alertControl: AlertController) { }
 
   ngOnInit() {
   }
 
+  onSelectedFile(event) {
+    this.fileData = <File>event.target.files[0];
+    console.log(this.fileData);
+  }
+
+upload(){
+  const fd = new FormData();
+  fd.append('sampleFile',this.fileData);
+
+  this.apiService.upload(fd).then((response) => {
+    console.log(response);
+  }).catch((err) => {
+    console.log(err);
+  });
+}
+
   getPicture(srcType : number){
-    // const options: CameraOptions = {
-    //   quality: 70,
-    //   destinationType: this.camera.DestinationType.FILE_URI,
-    //   encodingType: this.camera.EncodingType.JPEG,
-    //   mediaType: this.camera.MediaType.PICTURE
-    // }
-    
-    // this.camera.getPicture(options).then((imageData) => {
-    //  // imageData is either a base64 encoded string or a file URI
-    //  // If it's base64 (DATA_URL):
-    //  this.myphoto = 'data:image/jpeg;base64,' + imageData;
-    // }, (err) => {
-    //  // Handle error
-    // });
     const options: CameraOptions = {
       quality: 100,
       destinationType: this.useURI ? this.camera.DestinationType.FILE_URI : this.camera.DestinationType.DATA_URL,
@@ -57,11 +64,5 @@ export class UploadPage implements OnInit {
     });
   }
   
-  upload(){
-    this.apiService.upload(this.imageData).then((response) => {
-      console.log(response);
-    }).catch((err) => {
-      console.log(err);
-    });
-  }
+  
 }

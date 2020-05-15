@@ -48,17 +48,17 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
   }
-
+  
   login() {
     console.log('login');
     // this.data tu send dalam ni
     this.apiService.login(this.data).then(response => {
       console.log('if http status 2xx come here', response);
-      // this.router.navigateByUrl('/dashboard');
-      // console.log('login');
-      if(response.isPrototypeOf.length == 1){
-        this.router.navigateByUrl('/dashboard'); 
-      }
+       this.router.navigateByUrl('/dashboard');
+       console.log('login');
+      // if(response.isPrototypeOf.length == 1){
+  //   this.router.navigateByUrl('/dashboard'); 
+  // }
     }).catch(error => {
       console.log('if http status 4xx/5xx come here', error);
       this.presentFailAlert();

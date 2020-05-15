@@ -9,30 +9,9 @@
 
 <ion-content padding>
   <div class="wrapper">
-    <div class="gridView" *ngFor="let userData of userData">
-      <h4>{{userData.fullname}}</h4>
-      <p>{{userData.username}}</p>
-      <p>{{userData.email}}</p>
-      <p>{{userData.contact_number}}</p>
+    <div class="gridView" *ngFor="let img of image">
+      <img [src]="img.url">
+      <p text-center>{{img.name}}</p>
     </div>
   </div>
-  <!-- <ion-card padding margin>
-    <ion-card-title>Welcome user</ion-card-title>
-    <ion-card-content>
-        <ion-row>
-          <ion-label>Free Plan</ion-label>
-        </ion-row> -->
-        <!-- <ion-button item-end (click)="retrieveImage()">
-          Upgrade
-        </ion-button> -->
-        <!-- <div *ngFor="let userData of userData">
-          <p>{{userData.fullname}}</p>
-          <p>{{userData.username}}</p>
-          <p>{{userData.email}}</p>
-          <p>{{userData.contact_number}}</p>
-          <p>-----------------------</p>
-        </div> -->
-        <!-- <p> {{userData}} </p> -->
-    <!-- </ion-card-content>
-  </ion-card> -->
 </ion-content>
