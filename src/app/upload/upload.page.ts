@@ -1,8 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { ApiService } from '../services/api/api.service';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { AlertController } from '@ionic/angular';
-import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-upload',
@@ -18,7 +17,7 @@ export class UploadPage implements OnInit {
   constructor(
     private camera:Camera , 
     public apiService: ApiService, 
-    public alertControl: AlertController) { }
+    public alertCtrl: AlertController) { }
 
   ngOnInit() {
   }
@@ -29,16 +28,27 @@ export class UploadPage implements OnInit {
   }
 
 upload(){
-  const fd = new FormData();
-  fd.append('sampleFile',this.fileData);
+  const fd = new FormData(); //create a new form data for the file
+  fd.append('sampleFile',this.fileData); //name sampleFile, refer api folder
 
   this.apiService.upload(fd).then((response) => {
     console.log(response);
+    
   }).catch((err) => {
     console.log(err);
+    this.presentFailAlert();
   });
 }
 
+//upload fail
+async presentFailAlert(){
+  const alert = await this.alertCtrl.create({
+    subHeader:"Upload Failed",
+    message:"Sorry, please try again.",
+    buttons:['OK']
+  });
+  await alert.present();
+}
   getPicture(srcType : number){
     const options: CameraOptions = {
       quality: 100,

@@ -21,7 +21,7 @@ export class ApiService {
   }
 
   upload(data) {
-    return this.httpClient.post('http://192.168.0.158:8080/api/files/upload', data).toPromise();
+    return this.httpClient.post('http://192.168.0.158:8080/api/files/upload', data, {responseType: 'text'}).toPromise();
   } 
 
   logout(){
@@ -36,4 +36,3 @@ export class ApiService {
     return this.httpClient.get('http://192.168.0.158:8080/api/files');
   }
 }
-//192.168.0.158
