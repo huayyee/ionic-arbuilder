@@ -41,10 +41,11 @@ upload(){
 
   this.apiService.upload(fd).then((response) => {
     console.log(response);
+    this.presentSuccessAlert();
     this.fileData =null;
     this.imgURL = ""; 
     this.imgName = "";
-    
+
   }).catch((err) => {
     console.log(err);
     this.presentFailAlert();
@@ -56,6 +57,16 @@ async presentFailAlert(){
   const alert = await this.alertCtrl.create({
     subHeader:"Upload Failed",
     message:"Sorry, please try again.",
+    buttons:['OK']
+  });
+  await alert.present();
+}
+
+//uploadSuccess
+async presentSuccessAlert(){
+  const alert = await this.alertCtrl.create({
+    subHeader:"Uploaded Successfully",
+    message: this.imgName + " has uploaded.",
     buttons:['OK']
   });
   await alert.present();
