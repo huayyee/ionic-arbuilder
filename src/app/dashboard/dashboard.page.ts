@@ -15,6 +15,10 @@ export class DashboardPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    
+  }
+
+  ionViewWillEnter(){
     this.retrieveImage();
   }
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../services/api/api.service';
 
 @Component({
   selector: 'app-model',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModelPage implements OnInit {
 
-  constructor() { }
+  image: any;
+
+  constructor(
+    public apiService : ApiService
+  ) { }
 
   ngOnInit() {
+    this.retrieveImage();
+  }
+
+  retrieveImage(){
+    this.apiService.getTdModel().subscribe(data => {
+      this.image = data;
+      console.log(JSON.stringify(data));
+      console.log(data);
+    })
   }
 
 }

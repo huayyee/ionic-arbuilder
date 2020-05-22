@@ -13,18 +13,26 @@ export class UploadPage implements OnInit {
   imageData: string;
   @Input() useURI = true;
   fileData: File = null;
+  imgURL: any;
+  imgName: any;
 
   constructor(
     private camera:Camera , 
     public apiService: ApiService, 
-    public alertCtrl: AlertController) { }
+    public alertCtrl: AlertController) {}
 
   ngOnInit() {
   }
 
   onSelectedFile(event) {
     this.fileData = <File>event.target.files[0];
-    console.log(this.fileData);
+    
+    var reader = new FileReader();
+    reader.readAsDataURL(this.fileData); 
+    reader.onload = (_event) => { 
+      this.imgURL = reader.result; 
+      this.imgName = this.fileData.name;
+    }
   }
 
 upload(){
@@ -33,6 +41,9 @@ upload(){
 
   this.apiService.upload(fd).then((response) => {
     console.log(response);
+    this.fileData =null;
+    this.imgURL = ""; 
+    this.imgName = "";
     
   }).catch((err) => {
     console.log(err);

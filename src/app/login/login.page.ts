@@ -36,12 +36,10 @@ export class LoginPage implements OnInit {
   ) {
     this.loginForm = new FormGroup({
       'username': new FormControl('', Validators.compose([
-        Validators.required,
-        // Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+        Validators.required
       ])),
       'password': new FormControl('', Validators.compose([
-        Validators.required,
-        // Validators.minLength(6)
+        Validators.required
       ]))
     });
   }
@@ -56,9 +54,6 @@ export class LoginPage implements OnInit {
       console.log('if http status 2xx come here', response);
        this.router.navigateByUrl('/dashboard');
        console.log('login');
-      // if(response.isPrototypeOf.length == 1){
-  //   this.router.navigateByUrl('/dashboard'); 
-  // }
     }).catch(error => {
       console.log('if http status 4xx/5xx come here', error);
       this.presentFailAlert();

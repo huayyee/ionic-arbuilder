@@ -8,25 +8,10 @@
 </ion-header>
 
 <ion-content padding>
-  <div class="wrapper">
-    <div class="gridView">
-      <img src="assets/icon/arbuilder.png"/>
-      <p text-center>arbuilder</p>
+    <div class="wrapper">
+      <div class="gridView" *ngFor="let img of image">
+        <img [src]="'http://localhost:8080/'+ img.url">
+        <p text-center>{{img.name}}</p>
+      </div>
     </div>
-
-    <div class="gridView">
-      <img src="assets/icon/arbuilder.png"/>
-      <p text-center>arbuilder</p>
-    </div>
-
-    <div class="gridView">
-      <img src="assets/icon/arbuilder.png"/>
-      <p text-center>arbuilder</p>
-    </div>
-
-    <div class="gridView">
-      <img src="assets/icon/arbuilder.png"/>
-      <p text-center>arbuilder</p>
-    </div>
-  </div>
 </ion-content>

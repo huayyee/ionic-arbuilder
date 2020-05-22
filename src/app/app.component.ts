@@ -42,4 +42,8 @@ export class AppComponent {
       this.router.navigateByUrl('/login');
     });
   }
+
+  ngOnDestroy(){
+    console.log("destroy");
+  }
 }

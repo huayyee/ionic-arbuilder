@@ -24,14 +24,15 @@
       <button ion-button slot="end" color="primary" (click)="upload()">Upload</button>
     </ion-card> -->
     <ion-row padding>
-      <!-- <div *ngIf="previewUrl">
-        <img [src]="previewUrl" height="200"> 
-      </div> -->
+      <div *ngIf="file">
+        <p>{{imgName}}</p>
+        <img [src]="imgURL" height="200">
+      </div>
       <form>
         <ion-button (click)="input.click()">Gallery</ion-button>
-        <input style="display: none;" type='file' name='file' (change)="onSelectedFile($event)" accept="image/*" #input/>
+        <input style="display: none;" type='file' [(ngModel)]="file" name='file' (change)="onSelectedFile($event)" accept="image/*" #input capture="environment"/>
         
-        <ion-button color="primary" type="submit" (click)="upload()">Upload</ion-button>
+        <ion-button [disabled]="!file" color="primary" type="submit" (click)="upload()">Upload</ion-button>
       </form>
       
     </ion-row>
