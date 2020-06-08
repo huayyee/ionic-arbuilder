@@ -10,6 +10,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ApiService } from './services/api/api.service';
 import { HttpClientModule } from '@angular/common/http';
+import {File} from '@ionic-native/file/ngx';
+import { FilePath } from '@ionic-native/file-path/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,6 +27,8 @@ import { HttpClientModule } from '@angular/common/http';
     SplashScreen,
     ApiService,
     Camera,
+    File,
+    FilePath,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

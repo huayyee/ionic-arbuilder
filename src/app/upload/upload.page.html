@@ -28,11 +28,17 @@
         <p>{{imgName}}</p>
         <img [src]="imgURL" height="200">
       </div>
+      <div *ngIf="takenImg">
+        <p>{{imgName}}</p>
+        <img [src]="takenImg" height="200">
+      </div>
       <form>
         <ion-button (click)="input.click()">Gallery</ion-button>
-        <input style="display: none;" type='file' name='file' (change)="onSelectedFile($event)" accept="image/*" #input capture="environment"/>
-        
-        <ion-button [disabled]="!imgURL" color="primary" type="submit" (click)="upload()">Upload</ion-button>
+        <input style="display: none;" type='file' name='file' (change)="onSelectedFile($event)" accept="image/*" #input/>
+        <ion-button color="primary" (click)="takePicture(1)"><ion-icon name="camera"></ion-icon></ion-button>
+        <br>
+        <ion-button *ngIf="imgURL" [disabled]="!imgURL" color="primary" type="submit" (click)="upload()">Upload</ion-button>
+        <ion-button *ngIf="takenImg" [disabled]="!takenImg" color="primary" type="submit" (click)="uploadImg()">Upload</ion-button>
       </form>
       
     </ion-row>

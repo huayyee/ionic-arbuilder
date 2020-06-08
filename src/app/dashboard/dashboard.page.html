@@ -10,9 +10,19 @@
 <ion-content padding>
   <div class="wrapper">
     <div class="gridView" *ngFor="let img of image">
-      <img [src]="'http://localhost:8080/'+ img.url">
+      <img [src]="'http://192.168.0.158:8080/'+ img.url">
       <p text-center>{{img.name}}</p>
     </div>
+    
   </div>
-  <ion-fab-button color="primary">Primary</ion-fab-button>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)=startARMode()>
+      <ion-icon name="scan-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
+
+
+  
+  
+
