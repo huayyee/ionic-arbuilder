@@ -44,30 +44,38 @@ export class ArmodePage implements OnInit {
     });
     
     var self = this;
-    this.timer = setInterval(function(){
-      self.takePhotoAndUpload();
-    },10000);
     
+    setTimeout(function(){
+      self.takePhotoAndUpload();
+    },5000);
+
+    // this.timer = setInterval(function(){
+    //   self.takePhotoAndUpload();
+    // },1000000);
   }
 
   ionViewWillLeave(){
     this.cameraPreview.stopCamera();
-    clearInterval(this.timer);
+    //clearInterval(this.timer);
     console.log("camera stop");
   }
   
   takePhotoAndUpload() {
     this.cameraPreview.takePicture({width:640, height:640, quality: 85}).then((imageData) => {
       this.pic64 = "data:image/jpeg;base64," + imageData;
-      console.log(imageData);
 
       //convert to blob
       let imgBlob = this.dataURItoBlob(this.pic64);
+      let dateNow = new Date().getFullYear().toString() + new Date().getMonth().toString() + new Date().getDate().toString() + ":" + new Date().getHours()+ ":" + new Date().getMinutes();
+      let imgName = "photo_" + dateNow + ".jpg";
+      console.log(imgName);
+      console.log(imgBlob);
       const formData = new FormData();
-      formData.append('sampleFile',imgBlob, "photo.jpg");
+      formData.append('sampleImage',imgBlob, imgName);
       //send the file to backend and upload to database
-      this.apiService.upload(formData).then((response) => {
+      this.apiService.match(formData).then((response) => {
       console.log(response);
+
       }).catch((err) => {
         console.log(err);
       });

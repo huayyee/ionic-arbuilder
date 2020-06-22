@@ -24,15 +24,21 @@ export class ApiService {
     return this.httpClient.post('http://192.168.0.158:8080/api/files/upload', data, {responseType: 'text'}).toPromise();
   } 
 
-  logout(){
-    return this.httpClient.get('http://192.168.0.158:8080/api/logout');
+  match(data){
+    return this.httpClient.post('http://192.168.0.158:8080/api/images/match', data).toPromise();
   }
 
-  getUser(){
-    return this.httpClient.get('http://localhost:8080/api/users');
+  logout(){
+    return this.httpClient.get('http://192.168.0.158:8080/api/logout');
   }
 
   getTdModel(){
     return this.httpClient.get('http://192.168.0.158:8080/api/files');
   }
+
+  getUser(){
+    return this.httpClient.get('http://localhost:8080/api/users');
+  }
+ 
 }
+
