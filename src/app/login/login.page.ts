@@ -44,9 +44,10 @@ export class LoginPage implements OnInit {
     });
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
   
+  ionViewDidLeave(){}
+
   login() {
     console.log('login');
     // this.data tu send dalam ni

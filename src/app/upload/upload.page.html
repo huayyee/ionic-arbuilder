@@ -7,26 +7,32 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-row padding>
-    <div class="wrapper" text-center>
-      <div class="gridView" *ngIf="!imgURL">
-        <img scr="assets/icon/no_image.jpg"/>
-      </div>
-      
-      <div class="gridView" *ngIf="imgURL">
-        <p>{{imgName}}</p>
-        <img [src]="imgURL" height="200">
-      </div>
-      <div class="gridView"*ngIf="takenImg">
-        <p>{{imgName}}</p>
-        <img [src]="takenImg" height="200">
-      </div>
-    </div>
-  </ion-row>
-  
+
+<ion-content>  
   <ion-row padding>
     <form>
+      <div class="wrapper" text-center>
+        <div class="gridView" *ngIf="!imgName">
+          <img src="assets/icon/no_image.jpg"/>
+        </div>
+        
+        <div class="gridView" *ngIf="imgURL">
+          <!-- <p>{{imgName}}</p> -->
+          <ion-item>
+            <ion-label position="floating" class="whiteText">Image Name</ion-label>
+            <ion-input type="text" class="whiteText" [(ngModel)]="pic_name" name="pic_name"></ion-input>
+          </ion-item>
+          <img [src]="imgURL" height="200">
+        </div>
+        <div class="gridView"*ngIf="takenImg">
+          <!-- <p>{{imgName}}</p> -->
+          <ion-item>
+            <ion-label position="floating" class="whiteText">Image Name</ion-label>
+            <ion-input type="text" class="whiteText" [(ngModel)]="pic_name" name="pic_name"></ion-input>
+          </ion-item>
+          <img [src]="takenImg" height="200">
+        </div>
+      </div>
       <ion-button (click)="input.click()">Gallery</ion-button>
       <input style="display: none;" type='file' name='file' (change)="onSelectedFile($event)" accept="image/*" #input/>
       <ion-button color="primary" (click)="takePicture(1)"><ion-icon name="camera"></ion-icon></ion-button>
@@ -36,3 +42,4 @@
     </form>
   </ion-row>
 </ion-content>
+

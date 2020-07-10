@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    
+    <ion-button slot="start" routerLink="/dashboard" fill="clear">
+      <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+    </ion-button>
+
+    <ion-title>AR Mode Test</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form>
+    <ion-button (click)="input.click()">Gallery</ion-button>
+    <input style="display: none;" type='file' name='file' (change)="onSelectedFile($event)" accept="image/*" #input/>
+  </form>
+</ion-content>

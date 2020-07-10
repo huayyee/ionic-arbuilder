@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
@@ -30,7 +30,12 @@ const routes: Routes = [
   {
     path: 'armode',
     loadChildren: () => import('./armode/armode.module').then( m => m.ArmodePageModule)
+  },
+  {
+    path: 'arinput',
+    loadChildren: () => import('./arinput/arinput.module').then( m => m.ArinputPageModule)
   }
+
 ];
 
 @NgModule({

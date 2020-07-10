@@ -14,6 +14,7 @@ export class ArmodePage implements OnInit {
 
   timer :any;
   pic64 : any;
+  name : any;
 
   constructor(
     private cameraPreview: CameraPreview,
@@ -61,28 +62,32 @@ export class ArmodePage implements OnInit {
   }
   
   takePhotoAndUpload() {
-    this.cameraPreview.takePicture({width:640, height:640, quality: 85}).then((imageData) => {
+    this.cameraPreview.takePicture({width:640, height:640, quality: 100}).then((imageData) => {
+      console.log(imageData);
       this.pic64 = "data:image/jpeg;base64," + imageData;
 
-      //convert to blob
-      let imgBlob = this.dataURItoBlob(this.pic64);
-      let dateNow = new Date().getFullYear().toString() + new Date().getMonth().toString() + new Date().getDate().toString() + ":" + new Date().getHours()+ ":" + new Date().getMinutes();
-      let imgName = "photo_" + dateNow + ".jpg";
-      console.log(imgName);
-      console.log(imgBlob);
-      const formData = new FormData();
-      formData.append('sampleImage',imgBlob, imgName);
-      //send the file to backend and upload to database
-      this.apiService.match(formData).then((response) => {
-      console.log(response);
-
-      }).catch((err) => {
-        console.log(err);
-      });
+      // //convert to blob
+      // let imgBlob = this.dataURItoBlob(this.pic64);
+      // //let dateNow = new Date().getFullYear().toString() + new Date().getMonth().toString() + new Date().getDate().toString() + ":" + new Date().getHours()+ ":" + new Date().getMinutes();
+      // let imgName = "husky.jpg";
+      // console.log(imgName);
+      // console.log(imgBlob);
+      // const formData = new FormData();
+      // formData.append('sampleImage',imgBlob, imgName);
+      // //send the file to backend and upload to database
+      // this.apiService.match(formData).then((response) => {
+      //   this.name = response;
+      //   console.log(response);
+      // }).catch((err) => {
+      //   this.name = "Not match!";
+      //   console.log(err);
+      // });
 
     }, (err) => {
+      this.name = "Not match!";
       console.log(err);
     });
+    this.name = "test.jpg"
   }
 
   dataURItoBlob(dataURI) {
@@ -103,5 +108,16 @@ export class ArmodePage implements OnInit {
     var blob = new Blob([dataView], { type: mimeString });
     return blob;
 }
+
+// dataURItoBlob(dataURI) {
+//   const byteString = window.atob(dataURI);
+//   const arrayBuffer = new ArrayBuffer(byteString.length);
+//   const int8Array = new Uint8Array(arrayBuffer);
+//   for (let i = 0; i < byteString.length; i++) {
+//     int8Array[i] = byteString.charCodeAt(i);
+//    }
+//   const blob = new Blob([int8Array], { type: 'image/jpeg' });    
+//  return blob;
+// }
   
 }

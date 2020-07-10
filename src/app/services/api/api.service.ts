@@ -25,7 +25,7 @@ export class ApiService {
   } 
 
   match(data){
-    return this.httpClient.post('http://192.168.0.158:8080/api/images/match', data).toPromise();
+    return this.httpClient.post('http://192.168.0.158:8080/api/images/match', data, {responseType: 'text'}).toPromise();
   }
 
   logout(){

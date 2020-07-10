@@ -22,6 +22,10 @@ export class DashboardPage implements OnInit {
     this.retrieveImage();
   }
 
+  ionViewWillLeave(){}
+
+  ionViewDidLeave(){}
+  
   retrieveImage(){
     this.apiService.getTdModel().subscribe(data => {
       this.image = data;
